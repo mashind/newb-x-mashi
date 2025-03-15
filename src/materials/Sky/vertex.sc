@@ -3,6 +3,12 @@
   $output v_fogColor, v_worldPos, v_underwaterRainTime
 #endif
 
+#ifdef BETTER_CLOUD
+  #pragma message "Compiling with BETTER_CLOUD"  // Debug check
+  #define BETTER_CLOUD
+  #include <newb/config.h>
+#endif
+
 #include <bgfx_shader.sh>
 
 #ifndef INSTANCING

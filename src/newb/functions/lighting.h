@@ -165,14 +165,24 @@ vec4 nlEntityEdgeHighlightPreprocess(vec2 texcoord) {
 }
 
 vec3 nlLavaNoise(vec3 tiledCpos, float t) {
-  t *=  NL_LAVA_NOISE_SPEED;
-  float n = fastVoronoi2(1.12*tiledCpos.xz + t, 1.8);
-  n *= fastVoronoi2(4.48*tiledCpos.xz + t, 1.5);
-  n = 1.0 - n*n*n;
-  n = 1.0 - n*n;
-  float n2 = n*n;
-  n2 *= n2;
-  return vec3(n, n2, n2);
+  t *= 0.02;
+
+  // Remove forced 16-block repetition by not using mod()
+  vec2 uv = tiledCpos.xz; 
+
+  // Increase noise frequency to keep the effect small
+  float n = fastVoronoi2(6.0 * uv + t, 2.0);
+  n *= fastVoronoi2(12.0 * uv + t * 0.5, 1.8);
+
+  // Randomize the effect with extra distortion
+  n *= fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+
+  // Make the effect sharper (smaller dark radius)
+  n = 1.0 - pow(n, 4.0);
+  float n2 = pow(n, 8.0);
+
+  // Return grayscale to remove red tint
+  return vec3(n2);
 }
 
 #endif

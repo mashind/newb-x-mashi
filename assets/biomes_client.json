@@ -1,7 +1,7 @@
 {
   "biomes": {
     "default": {
-      "water_surface_transparency": 0.65
+      "water_surface_transparency": 0.20
     },
     "swampland": {
       "water_surface_transparency": 0.94
@@ -11,6 +11,10 @@
     },
     "the_end": {
       "fog_identifier": "newb:fog_the_end"
+    },
+    "pale_gardrn":{
+        "fog_identifier": "newb:pale_garden_fog",
+        "sky_color": "#888888"
     }
   }
 }
