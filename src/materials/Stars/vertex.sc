@@ -21,5 +21,5 @@ void main() {
   gl_PointSize = 8.0; // Set the point size for rendering
 #else
   gl_Position = vec4(0.0, 0.0, 0.0, 0.0);
-#endif
 }
+#endif
