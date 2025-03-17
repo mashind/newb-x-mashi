@@ -182,7 +182,7 @@ vec3 nlLavaNoise(vec3 tiledCpos, float t) {
   float n2 = pow(n, 8.0);
 
   // Return grayscale to remove red tint
-  return float3(n2, n2, n2);
+  return vec3(n2, n2, n2);
 }
 
 #endif
