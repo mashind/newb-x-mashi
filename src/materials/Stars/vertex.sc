@@ -4,7 +4,6 @@ $output v_color0
 #include <bgfx_shader.sh>
 
 uniform vec4 StarsColor;
-varying vec4 v_color0; // Assuming you need this to pass color to the fragment shader
 
 void main() {
 #ifndef INSTANCING
