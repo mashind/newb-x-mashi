@@ -4,6 +4,7 @@ $output v_color0
 #include <bgfx_shader.sh>
 
 uniform vec4 StarsColor;
+varying vec4 v_color0; // Assuming you need this to pass color to the fragment shader
 
 void main() {
 #ifndef INSTANCING
@@ -18,9 +19,8 @@ void main() {
   gl_Position = mul(u_viewProj, vec4(worldPos, 1.0));
 
   // *** Star Size Adjustment ***
-  gl_PointSize = 8.0; // Increase star size (default is 1.0)
-  // Larger values make the stars bigger
+  gl_PointSize = 8.0; // Set the point size for rendering
 #else
-  gl_Position = vec4(0.0,0.0,0.0,0.0);
+  gl_Position = vec4(0.0, 0.0, 0.0, 0.0);
 #endif
 }
