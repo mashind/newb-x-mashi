@@ -16,10 +16,10 @@ void main() {
     color.rgb *= StarsColor.rgb;
 
     v_color0 = color;
-    gl_Position = mul(u_viewProj, vec4(worldPos, 1.0));
+    SV_Position = mul(u_viewProj, vec4(worldPos, 1.0));
 
     // *** Star Size Adjustment for GLSL ***
-    gl_PointSize = 8.0; // Set the point size for rendering
+    SV_PointSize = 8.0; // Set the point size for rendering
 }
 #else
 // HLSL code for Windows (Direct3D)
