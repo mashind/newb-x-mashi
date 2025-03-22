@@ -28,7 +28,7 @@
 */
 
 /* Color correction */
-#define NL_TONEMAP_TYPE 3              // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
+#define NL_TONEMAP_TYPE 1              // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
 #define NL_GAMMA 1.6                  // 0.3 low ~ 2.0 high
 #define NL_EXPOSURE 1.6              // [toggle] 0.5 dark ~ 3.0 bright
 #define NL_SATURATION 2.5            // [toggle] 0.0 grayscale ~ 4.0 super saturated
@@ -63,8 +63,8 @@
 /* Fog */
 #define NL_FOG 1.0                // [toggle] 0.1 subtle ~ 1.0 blend with sky completely
 #define NL_MIST_DENSITY 0.6      // 0.0 no mist ~ 1.0 misty
-#define NL_RAIN_MIST_OPACITY 0.2 // [toggle] 0.04 very subtle ~ 0.5 thick rain mist blow
-#define NL_CLOUDY_FOG 0.0         // [toggle] 0.0 subtle - 0.8 dense fog clouds
+#define NL_RAIN_MIST_OPACITY 0.3 // [toggle] 0.04 very subtle ~ 0.5 thick rain mist blow
+//#define NL_CLOUDY_FOG 0.0         // [toggle] 0.0 subtle - 0.8 dense fog clouds
 
 /* Sky colors - zenith=top, horizon=bottom */
 #define NL_DAY_ZENITH_COL    vec3(0.015,0.15,1.0)
@@ -91,9 +91,9 @@
 //#define NL_GLOW_LEAK 0.6        // [toggle] 0.08 subtle ~ 1.0 100% brightness of NL_GLOW_TEX
 
 /* Waving */
-#define NL_PLANTS_WAVE 0.1    // [toggle] 0.02 gentle ~ 0.4 violent
-#define NL_LANTERN_WAVE 0.1   // [toggle] 0.05 subtle ~ 0.4 large swing
-#define NL_WAVE_SPEED 2.0      // 0.5 slow wave ~ 5.0 very fast wave
+#define NL_PLANTS_WAVE 0.05    // [toggle] 0.02 gentle ~ 0.4 violent
+#define NL_LANTERN_WAVE 0.05   // [toggle] 0.05 subtle ~ 0.4 large swing
+#define NL_WAVE_SPEED 1.6      // 0.5 slow wave ~ 5.0 very fast wave
 //#define NL_EXTRA_PLANTS_WAVE // [toggle] !dont use! wave using texture coords (1.21.0 vanilla 2048x1024)
 
 /* Water */
@@ -154,7 +154,7 @@
 #define NL_CLOUD3_SHADOW_OFFSET 0.3      // 0.05 minimal ~ 1.0 large
 
 /* Aurora settings */
-#define NL_AURORA 1.2           // [toggle] 0.4 dim ~ 4.0 very bright
+//#define NL_AURORA 1.2           // [toggle] 0.4 dim ~ 4.0 very bright
 #define NL_AURORA_VELOCITY 0.02 // 0.0 static ~ 0.3 very fast
 #define NL_AURORA_SCALE 0.04    // 0.002 large ~ 0.4 tiny
 #define NL_AURORA_WIDTH 0.18    // 0.04 thin line ~ 0.4 thick lines
@@ -162,9 +162,9 @@
 #define NL_AURORA_COL2 vec3(0.1,0.0,1.0)
 
 /* Shooting star */
-#define NL_SHOOTING_STAR 1.0        // [toggle] 0.2 dim ~ 1.0 bright
+#define NL_SHOOTING_STAR 2.0        // [toggle] 0.2 dim ~ 1.0 bright
 #define NL_SHOOTING_STAR_PERIOD 6.0 // 0.4 fast ~ 12.0 slow (12 secs)
-#define NL_SHOOTING_STAR_DELAY 64.0 // 0.0 no delay ~ 100.0 long time (100 secs)
+#define NL_SHOOTING_STAR_DELAY 6.0 // 0.0 no delay ~ 100.0 long time (100 secs)
 
 /* Galaxy */
 //#define NL_GALAXY_STARS 2.0           // [toggle] 0.1 dim - 4.0 bright
@@ -183,14 +183,14 @@
 #define NL_GODRAY 0.8 // [toggle] 0.1 subtle ~ 0.8 strong
 
 /* Sky reflection */
-#define NL_GROUND_REFL 0.0       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky 
+//#define NL_GROUND_REFL 0.0       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky 
 #define NL_GROUND_RAIN_WETNESS 0.8 // 0.0 no wetness ~ 1.0 fully wet blocks when raining
 #define NL_GROUND_RAIN_PUDDLES 0.7 // 0.0 no puddles ~ 1.0 puddles
 //#define NL_GROUND_AURORA_REFL    // [toggle] aurora reflection on ground
 
 /* Entity (Actor, ItemInHand) */
-#define NL_ENTITY_BRIGHTNESS     0.65 // 0.1 dark ~ 1.6 bright
-#define NL_ENTITY_EDGE_HIGHLIGHT 0.41 // 0.0 no highlight ~ 1.6 bright highlight
+#define NL_ENTITY_BRIGHTNESS     0.2 // 0.1 dark ~ 1.6 bright
+#define NL_ENTITY_EDGE_HIGHLIGHT 0.1 // 0.0 no highlight ~ 1.6 bright highlight
 
 /* Weather particles */
 #define NL_WEATHER_SPECK 0.0         // [toggle] 0.0 vanilla texture ~ 1.0 soft speck
@@ -199,8 +199,8 @@
 
 /* Lava effects */
 #define NL_LAVA_NOISE            // [toggle] darken lava in certain regions
-#define NL_LAVA_NOISE_BUMP 0.05 // [toggle] 0.1 subtle ~ 0.8 massive waves
-#define NL_LAVA_NOISE_SPEED 0.01 // 0.0 still ~ 0.1 fast
+#define NL_LAVA_NOISE_BUMP 1.0 // [toggle] 0.1 subtle ~ 0.8 massive waves
+#define NL_LAVA_NOISE_SPEED 0.1 // 0.0 still ~ 0.1 fast
 
 /*
   NEWB SHADER SUBPACK CONFIG
@@ -214,9 +214,7 @@
   Build tool will enable corresponding flags when compiling. 
 */
 
-#ifdef NO_WAVE_NO_FOG
-  #undef NL_TONEMAP_TYPE
-  #define NL_TONEMAP_TYPE 1
+#ifdef NO_WAVE_NO_FOG 
   #undef NL_FOG
   #undef NL_MIST_DENSITY
   #undef NL_RAIN_MIST_OPACITY

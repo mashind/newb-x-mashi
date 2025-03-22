@@ -1,16 +1,16 @@
-name = "Newb X Mashi v15.0"
-version = [0, 15, 0]
+name = "Newb X Mashi v15.11"
+version = [0, 15, 11]
 min_supported_mc_version = [1, 21, 20]
 description = '''
 §c%w
-§7- An enchanced vanilla shader for Minecraft!
+§7- Note : Some bug(s) may still haven't fixed yet
 %v
 §3https://devendrn.github.io/newb-shader/
 ''' # %w = patch warning, %v = version
 authors = ["mashind", "devendrn"]
 url = "https://devendrn.github.io/newb-shader/"
 uuid = "9dc15800-8161-4d8d-99df-c8911deba36c" # Use https://www.uuidgenerator.net/version4
-materials = ["Sky", "RenderChunk", "EndSky", "Clouds", "SunMoon", "Weather", "Stars"]
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds", "SunMoon", "Weather", "Stars", "ActorGlint"]
 
 [info] 
 copyright = '''
@@ -42,6 +42,7 @@ materials = []
 description = '''
 Clouds color match with sky
 '''
+
 [[subpack]]
 define = "BETTER_CLOUD_AND_SIMPLES"
 materials = ["Clouds"]
