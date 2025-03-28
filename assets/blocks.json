@@ -1,0 +1,17 @@
+{
+   {
+   "flowing_water" : {
+      "textures" : {
+         "down" : "still_water_grey",
+         "side" : "flowing_water_grey",
+         "up" : "still_water_grey"
+      }
+   },
+   "water" : {
+      "textures" : {
+         "down" : "still_water_grey",
+         "side" : "flowing_water_grey",
+         "up" : "still_water_grey"
+      }
+   },
+}

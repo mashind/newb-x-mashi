@@ -119,7 +119,7 @@
 /* Vanilla cloud settings - make sure to remove clouds.png when using this */
 #define NL_CLOUD0_THICKNESS 2.0      // 0.5 slim ~ 8.0 fat
 #define NL_CLOUD0_RAIN_THICKNESS 4.0 // 0.5 slim ~ 8.0 fat
-#define NL_CLOUD0_OPACITY 0.925        // 0.0 invisible ~ 1.0 opaque
+#define NL_CLOUD0_OPACITY 0.95        // 0.0 invisible ~ 1.0 opaque
 #define NL_CLOUD0_MULTILAYER         // [toggle] extra cloud layer
 
 /* Soft cloud settings */
@@ -198,7 +198,7 @@
 #define NL_WEATHER_PARTICLE_SIZE 1.0 // 0.5 tiny ~ 4.0 large
 
 /* Lava effects */
-#define NL_LAVA_NOISE            // [toggle] darken lava in certain regions
+//#define NL_LAVA_NOISE            // [toggle] darken lava in certain regions
 #define NL_LAVA_NOISE_BUMP 1.0 // [toggle] 0.1 subtle ~ 0.8 massive waves
 #define NL_LAVA_NOISE_SPEED 0.1 // 0.0 still ~ 0.1 fast
 
@@ -214,7 +214,7 @@
   Build tool will enable corresponding flags when compiling. 
 */
 
-#ifdef NO_WAVE_NO_FOG 
+#ifdef NO_WAVE_FOG_1 
   #undef NL_FOG
   #undef NL_MIST_DENSITY
   #undef NL_RAIN_MIST_OPACITY
@@ -225,10 +225,54 @@
   #undef NL_WATER_WAVE
   #undef NL_RAIN_MIST_OPACITY
   #undef NL_SHOOTING_STAR
+#endif
+
+#ifdef NO_WAVE_FOG_2 
+  #undef NL_FOG
+  #undef NL_MIST_DENSITY
+  #undef NL_RAIN_MIST_OPACITY
+  #undef NL_CLOUDY_FOG
+  #undef NL_PLANTS_WAVE
+  #undef NL_LANTERN_WAVE
+  #undef NL_UNDERWATER_WAVE
+  #undef NL_WATER_WAVE
+  #undef NL_RAIN_MIST_OPACITY
+  #undef NL_SHOOTING_STAR
+#endif
+
+#ifdef NO_WAVE_FOG_3 
+  #undef NL_FOG
+  #undef NL_MIST_DENSITY
+  #undef NL_RAIN_MIST_OPACITY
+  #undef NL_CLOUDY_FOG
+  #undef NL_PLANTS_WAVE
+  #undef NL_LANTERN_WAVE
+  #undef NL_UNDERWATER_WAVE
+  #undef NL_WATER_WAVE
+  #undef NL_RAIN_MIST_OPACITY
+  #undef NL_SHOOTING_STAR
+#endif
+
+#ifdef DEFAULT_1
+  #pragma message "Applying DEFAULT_1 colors"  // Debug
+  #undef NL_CLOUD_TYPE
+  #define NL_CLOUD_TYPE 0
   #undef NL_CLOUD0_MULTILAYER
 #endif
 
-#ifdef BETTER_CLOUD_AND_SIMPLES
+#ifdef DEFAULT_2
+  #pragma message "Applying DEFAULT_2 colors"  // Debug
+  #undef NL_CLOUD_TYPE
+  #define NL_CLOUD_TYPE 0
+#endif
+
+#ifdef DEFAULT_3
+  #pragma message "Applying DEFAULT_3 colors"  // Debug
+  #undef NL_CLOUD_TYPE
+  #define NL_CLOUD_TYPE 0
+#endif
+
+#ifdef SIMPLES
   #undef NL_DAY_HORIZON_COL
   #define NL_DAY_HORIZON_COL vec3(0.8,0.8,1.05)
   #undef NL_NIGHT_HORIZON_COL
@@ -240,8 +284,33 @@
   #undef NL_CLOUD0_MULTILAYER
 #endif
 
-#ifdef BETTER_CLOUD
-  #pragma message "Applying BETTER_CLOUD colors"  // Debug
+#ifdef LAYER_CLOUD_1
+  #pragma message "Applying LAYER_CLOUD_1 colors"  // Debug
+  #undef NL_DAY_HORIZON_COL
+  #define NL_DAY_HORIZON_COL vec3(0.8,0.8,1.05)
+  #undef NL_NIGHT_HORIZON_COL
+  #define NL_NIGHT_HORIZON_COL vec3(0.065, 0.075, 0.1)
+  #undef NL_DAWN_HORIZON_COL
+  #define NL_DAWN_HORIZON_COL  vec3(1.5, 0.35, 1.0)
+  #undef NL_CLOUD_TYPE
+  #define NL_CLOUD_TYPE 0
+  #undef NL_CLOUD0_MULTILAYER
+#endif
+
+#ifdef LAYER_CLOUD_2
+  #pragma message "Applying LAYER_CLOUD_2 colors"  // Debug
+  #undef NL_DAY_HORIZON_COL
+  #define NL_DAY_HORIZON_COL vec3(0.8,0.8,1.05)
+  #undef NL_NIGHT_HORIZON_COL
+  #define NL_NIGHT_HORIZON_COL vec3(0.065, 0.075, 0.1)
+  #undef NL_DAWN_HORIZON_COL
+  #define NL_DAWN_HORIZON_COL  vec3(1.5, 0.35, 1.0)
+  #undef NL_CLOUD_TYPE
+  #define NL_CLOUD_TYPE 0
+#endif
+
+#ifdef LAYER_CLOUD_3
+  #pragma message "Applying LAYER_CLOUD_3 colors"  // Debug
   #undef NL_DAY_HORIZON_COL
   #define NL_DAY_HORIZON_COL vec3(0.8,0.8,1.05)
   #undef NL_NIGHT_HORIZON_COL

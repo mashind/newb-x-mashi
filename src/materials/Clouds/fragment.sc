@@ -1,18 +1,45 @@
-$input v_color0
+$input v_color0, v_rainEffect, v_worldPos
 #include <newb/config.h>
 #if NL_CLOUD_TYPE >= 2
   $input v_color1, v_color2, v_fogColor
 #endif
 
+// Declare varying variables
+varying float v_rainEffect;
+varying vec3 v_worldPos;
+#if NL_CLOUD_TYPE >= 2
+  varying vec4 v_color1;
+  varying vec4 v_color2;
+  varying vec3 v_fogColor;
+#endif
+
 #include <bgfx_shader.sh>
 #include <newb/main.sh>
+
+// Add uniforms needed for rain
+uniform vec4 FogAndDistanceControl;
+
+// Define fog_fade function
+float fog_fade(vec3 wPos) {
+  return clamp(2.0 - length(wPos * vec3(0.005, 0.002, 0.005)), 0.0, 1.0);
+}
 
 #define NL_CLOUD_PARAMS(x) NL_CLOUD2##x##STEPS, NL_CLOUD2##x##THICKNESS, NL_CLOUD2##x##RAIN_THICKNESS, NL_CLOUD2##x##VELOCITY, NL_CLOUD2##x##SCALE, NL_CLOUD2##x##DENSITY, NL_CLOUD2##x##SHAPE
 
 void main() {
   vec4 color = v_color0;
 
-  #if NL_CLOUD_TYPE >= 2
+  #if NL_CLOUD_TYPE == 0
+    // Compute rain value
+    float rain = detectRain(FogAndDistanceControl.xyz);
+    // Apply rain effect passed from vertex shader
+    color.rgb *= 1.0 - v_rainEffect * rain;
+    // Apply fog fade using world position
+    color.a *= fog_fade(v_worldPos);
+    // Apply color correction
+    color.rgb = colorCorrection(color.rgb);
+
+  #elif NL_CLOUD_TYPE >= 2
     vec3 vDir = normalize(v_color0.xyz);
 
     #if NL_CLOUD_TYPE == 2
