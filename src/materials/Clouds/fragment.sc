@@ -9,8 +9,22 @@ $input v_color0, v_rainEffect, v_worldPos
 
 uniform vec4 FogAndDistanceControl;
 
+// Sampler for glint effect
+SAMPLER2D(glintTexture, 0);
+
 float fog_fade(vec3 wPos) {
     return clamp(2.0 - length(wPos * vec3(0.005, 0.002, 0.005)), 0.0, 1.0);
+}
+
+// Glint effect function
+vec4 nlGlint(vec4 light, vec4 layerUV, vec4 glintColor, vec4 tileLightColor, vec4 albedo) {
+    float d = frac(dot(albedo.rgb, vec3_splat(4.0)));
+    vec4 tex1 = texture2D(glintTexture, frac(layerUV.xy + 0.1 * d)).rgbr;
+    vec4 tex2 = texture2D(glintTexture, frac(layerUV.zw + 0.1 * d)).rgbr;
+    vec4 glint = (tex1 * tex1 + tex2 * tex2) * tileLightColor * glintColor;
+    light.rgb = light.rgb * (1.0 - 0.4 * glint.a) + 80.0 * glint.rgb;
+    light.rgb += vec3(0.1, 0.0, 0.1) + 0.2 * spectrum(sin(layerUV.x * 9.42477 + 2.0 * glint.a + d));
+    return light;
 }
 
 #define NL_CLOUD_PARAMS(x) NL_CLOUD2##x##STEPS, NL_CLOUD2##x##THICKNESS, NL_CLOUD2##x##RAIN_THICKNESS, NL_CLOUD2##x##VELOCITY, NL_CLOUD2##x##SCALE, NL_CLOUD2##x##DENSITY, NL_CLOUD2##x##SHAPE
@@ -21,6 +35,14 @@ void main() {
     #if NL_CLOUD_TYPE == 0
         float rain = detectRain(FogAndDistanceControl.xyz);
         color.rgb *= 1.0 - v_rainEffect * rain;
+
+        // Apply glint effect (example usage)
+        vec4 light = vec4(1.0, 1.0, 1.0, 1.0);
+        vec4 layerUV = vec4(0.0, 0.0, 0.0, 0.0); // Adjust as needed
+        vec4 glintColor = vec4(1.0, 1.0, 1.0, 1.0);
+        vec4 tileLightColor = vec4(1.0, 1.0, 1.0, 1.0);
+        color = nlGlint(light, layerUV, glintColor, tileLightColor, color);
+
         color.a *= fog_fade(v_worldPos);
         color.rgb = colorCorrection(color.rgb);
     #elif NL_CLOUD_TYPE >= 2
