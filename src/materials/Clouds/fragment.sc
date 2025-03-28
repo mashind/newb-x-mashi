@@ -9,18 +9,16 @@ $input v_color0, v_rainEffect, v_worldPos
 
 uniform vec4 FogAndDistanceControl;
 
-// Sampler for glint effect
 SAMPLER2D(glintTexture, 0);
 
 float fog_fade(vec3 wPos) {
     return clamp(2.0 - length(wPos * vec3(0.005, 0.002, 0.005)), 0.0, 1.0);
 }
 
-// Glint effect function
 vec4 nlGlint(vec4 light, vec4 layerUV, vec4 glintColor, vec4 tileLightColor, vec4 albedo) {
-    float d = frac(dot(albedo.rgb, vec3_splat(4.0)));
-    vec4 tex1 = texture2D(glintTexture, frac(layerUV.xy + 0.1 * d)).rgbr;
-    vec4 tex2 = texture2D(glintTexture, frac(layerUV.zw + 0.1 * d)).rgbr;
+    float d = fract(dot(albedo.rgb, vec3_splat(4.0))); // Changed frac to fract
+    vec4 tex1 = texture2D(glintTexture, fract(layerUV.xy + 0.1 * d)).rgbr; // Changed frac to fract
+    vec4 tex2 = texture2D(glintTexture, fract(layerUV.zw + 0.1 * d)).rgbr; // Changed frac to fract
     vec4 glint = (tex1 * tex1 + tex2 * tex2) * tileLightColor * glintColor;
     light.rgb = light.rgb * (1.0 - 0.4 * glint.a) + 80.0 * glint.rgb;
     light.rgb += vec3(0.1, 0.0, 0.1) + 0.2 * spectrum(sin(layerUV.x * 9.42477 + 2.0 * glint.a + d));
@@ -36,9 +34,8 @@ void main() {
         float rain = detectRain(FogAndDistanceControl.xyz);
         color.rgb *= 1.0 - v_rainEffect * rain;
 
-        // Apply glint effect (example usage)
         vec4 light = vec4(1.0, 1.0, 1.0, 1.0);
-        vec4 layerUV = vec4(0.0, 0.0, 0.0, 0.0); // Adjust as needed
+        vec4 layerUV = vec4(0.0, 0.0, 0.0, 0.0);
         vec4 glintColor = vec4(1.0, 1.0, 1.0, 1.0);
         vec4 tileLightColor = vec4(1.0, 1.0, 1.0, 1.0);
         color = nlGlint(light, layerUV, glintColor, tileLightColor, color);
