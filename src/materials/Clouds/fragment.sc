@@ -7,22 +7,12 @@ $input v_color0, v_rainEffect, v_worldPos
 #include <bgfx_shader.sh>
 #include <newb/main.sh>
 
-uniform vec4 FogAndDistanceControl;
-
-float fog_fade(vec3 wPos) {
-    return clamp(2.0 - length(wPos * vec3(0.005, 0.002, 0.005)), 0.0, 1.0);
-}
-
 #define NL_CLOUD_PARAMS(x) NL_CLOUD2##x##STEPS, NL_CLOUD2##x##THICKNESS, NL_CLOUD2##x##RAIN_THICKNESS, NL_CLOUD2##x##VELOCITY, NL_CLOUD2##x##SCALE, NL_CLOUD2##x##DENSITY, NL_CLOUD2##x##SHAPE
 
 void main() {
     vec4 color = v_color0;
 
-    #if NL_CLOUD_TYPE == 0
-        float rain = detectRain(FogAndDistanceControl.xyz);
-        color.rgb *= 1.0 - 0.8 * rain; // Apply uniform rain darkening to all layers
-        // Fog fade already applied in vertex shader (v_color0.a)
-    #elif NL_CLOUD_TYPE >= 2
+    #if NL_CLOUD_TYPE >= 2
         vec3 vDir = normalize(v_color0.xyz);
         #if NL_CLOUD_TYPE == 2
             color = renderCloudsRounded(vDir, v_color0.xyz, v_color1.w, v_color2.w, v_color2.rgb, v_color1.rgb, NL_CLOUD_PARAMS(_));

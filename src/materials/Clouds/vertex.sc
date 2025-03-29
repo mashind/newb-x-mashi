@@ -42,17 +42,14 @@ void main() {
 
             color.rgb = skycol.zenith + skycol.horizonEdge;
 
-            // Layer-specific data
             float ref = a_color0.b;
             float layerVal = a_color0.g;
             float layerOpacity;
             float layerHeightEffect;
-            float layerRainEffect;
 
             if (layerVal > 0.75 * ref) { // g=230, Layer 2
                 layerOpacity = 0.2;
                 layerHeightEffect = 1.5;
-                layerRainEffect = 0.2;
                 #ifdef NL_CLOUD0_MULTILAYER
                     worldPos.y += 128.0;
                 #else
@@ -62,7 +59,6 @@ void main() {
             } else if (layerVal > 0.5 * ref) { // g=153, Layer 1
                 layerOpacity = 0.8;
                 layerHeightEffect = 1.0;
-                layerRainEffect = 0.5;
                 #ifdef NL_CLOUD0_MULTILAYER
                     worldPos.y += 64.0;
                 #else
@@ -72,15 +68,15 @@ void main() {
             } else { // g=0, Layer 0
                 layerOpacity = 1.0;
                 layerHeightEffect = 0.5;
-                layerRainEffect = 0.8;
             }
 
             color.rgb += dot(color.rgb, vec3(0.3, 0.4, 0.3)) * a_position.y * layerHeightEffect;
-            // Removed rain darkening (moved to fragment shader)
-            color.rgb = colorCorrection(color.rgb);
+            color.rgb *= 1.0 - 0.8 * rain; // Apply rain darkening (same as original)
+            color.rgb = colorCorrection(color.rgb); // Apply color correction after rain darkening
             color.a = NL_CLOUD0_OPACITY * layerOpacity * fog_fade(worldPos.xyz);
 
-            v_rainEffect = layerRainEffect;
+            // Not used for NL_CLOUD_TYPE == 0, but must be set to avoid undefined behavior
+            v_rainEffect = 0.0;
             v_worldPos = worldPos;
         #else
             pos.xz = pos.xz - 32.0;
