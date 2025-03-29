@@ -43,41 +43,40 @@ void main() {
             color.rgb = skycol.zenith + skycol.horizonEdge;
 
             // Layer-specific data
-            float ref = a_color0.b; // Reference value (typically 255 or 1.0)
-            float layerVal = a_color0.g; // Green channel: 0, 153, or 230
+            float ref = a_color0.b;
+            float layerVal = a_color0.g;
             float layerOpacity;
             float layerHeightEffect;
             float layerRainEffect;
 
-            // Add three layers based on green channel
-            if (layerVal > 0.75 * ref) { // g=230, Layer 2 (3rd layer)
-                layerOpacity = 0.2; // Denser
-                layerHeightEffect = 1.5; // Stronger height effect
-                layerRainEffect = 0.2; // Less affected by rain
+            if (layerVal > 0.75 * ref) { // g=230, Layer 2
+                layerOpacity = 0.2;
+                layerHeightEffect = 1.5;
+                layerRainEffect = 0.2;
                 #ifdef NL_CLOUD0_MULTILAYER
-                    worldPos.y += 128.0; // Higher layer
+                    worldPos.y += 128.0;
                 #else
                     worldPos = vec3(0.0, 0.0, 0.0);
                     color.a = 0.0;
                 #endif
-            } else if (layerVal > 0.5 * ref) { // g=153, Layer 1 (2nd layer)
-                layerOpacity = 0.8; // Medium density
-                layerHeightEffect = 1.0; // Normal height effect
-                layerRainEffect = 0.5; // Moderately affected
+            } else if (layerVal > 0.5 * ref) { // g=153, Layer 1
+                layerOpacity = 0.8;
+                layerHeightEffect = 1.0;
+                layerRainEffect = 0.5;
                 #ifdef NL_CLOUD0_MULTILAYER
-                    worldPos.y += 64.0; // Middle layer
+                    worldPos.y += 64.0;
                 #else
                     worldPos = vec3(0.0, 0.0, 0.0);
                     color.a = 0.0;
                 #endif
-            } else { // g=0, Layer 0 (1st layer)
-                layerOpacity = 1.0; // Wispy
-                layerHeightEffect = 0.5; // Weaker height effect
-                layerRainEffect = 0.8; // Strongly affected
+            } else { // g=0, Layer 0
+                layerOpacity = 1.0;
+                layerHeightEffect = 0.5;
+                layerRainEffect = 0.8;
             }
 
             color.rgb += dot(color.rgb, vec3(0.3, 0.4, 0.3)) * a_position.y * layerHeightEffect;
-            color.rgb *= (1.0 - layerRainEffect * rain); // Apply per-layer rain effect
+            // Removed rain darkening (moved to fragment shader)
             color.rgb = colorCorrection(color.rgb);
             color.a = NL_CLOUD0_OPACITY * layerOpacity * fog_fade(worldPos.xyz);
 

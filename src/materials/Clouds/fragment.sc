@@ -19,9 +19,9 @@ void main() {
     vec4 color = v_color0;
 
     #if NL_CLOUD_TYPE == 0
-        // Rain effect already applied in vertex shader per layer
-        // Just apply fog fade (already factored into v_color0.a in vertex shader)
-        // color.rgb already has colorCorrection applied in vertex shader
+        float rain = detectRain(FogAndDistanceControl.xyz);
+        color.rgb *= 1.0 - 0.8 * rain; // Apply uniform rain darkening to all layers
+        // Fog fade already applied in vertex shader (v_color0.a)
     #elif NL_CLOUD_TYPE >= 2
         vec3 vDir = normalize(v_color0.xyz);
         #if NL_CLOUD_TYPE == 2
