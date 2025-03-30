@@ -189,8 +189,8 @@
 //#define NL_GROUND_AURORA_REFL    // [toggle] aurora reflection on ground
 
 /* Entity (Actor, ItemInHand) */
-#define NL_ENTITY_BRIGHTNESS     0.2 // 0.1 dark ~ 1.6 bright
-#define NL_ENTITY_EDGE_HIGHLIGHT 0.1 // 0.0 no highlight ~ 1.6 bright highlight
+#define NL_ENTITY_BRIGHTNESS     0.4 // 0.1 dark ~ 1.6 bright
+#define NL_ENTITY_EDGE_HIGHLIGHT 0.0 // 0.0 no highlight ~ 1.6 bright highlight
 
 /* Weather particles */
 #define NL_WEATHER_SPECK 0.0         // [toggle] 0.0 vanilla texture ~ 1.0 soft speck
@@ -225,6 +225,10 @@
   #undef NL_WATER_WAVE
   #undef NL_RAIN_MIST_OPACITY
   #undef NL_SHOOTING_STAR
+  #undef NL_ENTITY_BRIGHTNESS
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+  #define NL_ENTITY_BRIGHTNESS     0.1
+  #define NL_ENTITY_EDGE_HIGHLIGHT 0.2
 #endif
 
 #ifdef NO_WAVE_FOG_2 
@@ -238,6 +242,10 @@
   #undef NL_WATER_WAVE
   #undef NL_RAIN_MIST_OPACITY
   #undef NL_SHOOTING_STAR
+  #undef NL_ENTITY_BRIGHTNESS
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+  #define NL_ENTITY_BRIGHTNESS     0.1
+  #define NL_ENTITY_EDGE_HIGHLIGHT 0.2
 #endif
 
 #ifdef NO_WAVE_FOG_3 
@@ -251,6 +259,10 @@
   #undef NL_WATER_WAVE
   #undef NL_RAIN_MIST_OPACITY
   #undef NL_SHOOTING_STAR
+  #undef NL_ENTITY_BRIGHTNESS
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+  #define NL_ENTITY_BRIGHTNESS     0.1
+  #define NL_ENTITY_EDGE_HIGHLIGHT 0.2
 #endif
 
 #ifdef DEFAULT_1
@@ -258,18 +270,30 @@
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 0
   #undef NL_CLOUD0_MULTILAYER
+  #undef NL_ENTITY_BRIGHTNESS
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+  #define NL_ENTITY_BRIGHTNESS     0.1
+  #define NL_ENTITY_EDGE_HIGHLIGHT 0.2
 #endif
 
 #ifdef DEFAULT_2
   #pragma message "Applying DEFAULT_2 colors"  // Debug
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 0
+  #undef NL_ENTITY_BRIGHTNESS
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+  #define NL_ENTITY_BRIGHTNESS     0.1
+  #define NL_ENTITY_EDGE_HIGHLIGHT 0.2
 #endif
 
 #ifdef DEFAULT_3
   #pragma message "Applying DEFAULT_3 colors"  // Debug
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 0
+  #undef NL_ENTITY_BRIGHTNESS
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+  #define NL_ENTITY_BRIGHTNESS     0.1
+  #define NL_ENTITY_EDGE_HIGHLIGHT 0.2
 #endif
 
 #ifdef SIMPLES
@@ -282,6 +306,10 @@
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 0
   #undef NL_CLOUD0_MULTILAYER
+  #undef NL_ENTITY_BRIGHTNESS
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+  #define NL_ENTITY_BRIGHTNESS     0.1
+  #define NL_ENTITY_EDGE_HIGHLIGHT 0.2
 #endif
 
 #ifdef LAYER_CLOUD_1
@@ -295,6 +323,10 @@
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 0
   #undef NL_CLOUD0_MULTILAYER
+  #undef NL_ENTITY_BRIGHTNESS
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+  #define NL_ENTITY_BRIGHTNESS     0.1
+  #define NL_ENTITY_EDGE_HIGHLIGHT 0.2
 #endif
 
 #ifdef LAYER_CLOUD_2
@@ -307,6 +339,10 @@
   #define NL_DAWN_HORIZON_COL  vec3(1.5, 0.35, 1.0)
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 0
+  #undef NL_ENTITY_BRIGHTNESS
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+  #define NL_ENTITY_BRIGHTNESS     0.1
+  #define NL_ENTITY_EDGE_HIGHLIGHT 0.2
 #endif
 
 #ifdef LAYER_CLOUD_3
@@ -319,6 +355,10 @@
   #define NL_DAWN_HORIZON_COL  vec3(1.5, 0.35, 1.0)
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 0
+  #undef NL_ENTITY_BRIGHTNESS
+  #undef NL_ENTITY_EDGE_HIGHLIGHT
+  #define NL_ENTITY_BRIGHTNESS     0.1
+  #define NL_ENTITY_EDGE_HIGHLIGHT 0.2
 #endif
 
 #endif
