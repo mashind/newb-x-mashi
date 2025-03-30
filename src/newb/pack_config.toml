@@ -46,6 +46,13 @@ No fog and wave effects, 2 Layers Clouds
 '''
 
 [[subpack]]
+define = "NO_WAVE_FOG_3"
+materials = ["RenderChunk", "Clouds"]
+description = '''
+No fog and wave effects, 3 Layers Clouds
+'''
+
+[[subpack]]
 define = "DEFAULT_1"
 materials = ["Clouds"]
 description = '''
@@ -57,6 +64,13 @@ define = "DEFAULT_2"
 materials = ["Clouds"]
 description = '''
 Clouds Color Match With Sky Color, 2 Layers Clouds
+'''
+
+[[subpack]]
+define = "DEFAULT_3"
+materials = ["Clouds"]
+description = '''
+Clouds Color Match With Sky Color, 3 Layers Clouds
 '''
 
 [[subpack]]
@@ -73,3 +87,9 @@ description = '''
 2 Layers Clouds
 '''
 
+[[subpack]]
+define = "LAYER_CLOUD_3"
+materials = ["Clouds"]
+description = '''
+3 Layers Clouds
+'''

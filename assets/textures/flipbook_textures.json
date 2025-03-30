@@ -1,5 +1,5 @@
 {
- {
+  {
     "flipbook_texture": "textures/blocks/water_still_grey",
     "atlas_tile": "still_water_grey",
     "ticks_per_frame": 2
@@ -7,6 +7,16 @@
   {
     "flipbook_texture": "textures/blocks/water_flow_grey",
     "atlas_tile": "flowing_water_grey",
+    "replicate": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/water_still",
+    "atlas_tile": "still_water",
+    "ticks_per_frame": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/water_flow",
+    "atlas_tile": "flowing_water",
     "replicate": 2
   },
   {
