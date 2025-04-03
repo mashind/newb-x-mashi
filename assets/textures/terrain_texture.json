@@ -1,19 +1,116 @@
 {
-    "flowing_water_grey": {
-      "quad": 1,
-      "textures": "textures/blocks/water_flow_grey"
+  "resource_pack_name": "vanilla",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "cherry_leaves": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/cherry_leaves", "weight": 90 },
+          { "path": "textures/blocks/cherry_leaves1", "weight": 7 },
+          { "path": "textures/blocks/cherry_leaves2", "weight": 3 }
+        ]
+      }
     },
-    "flowing_water": {
-      "quad": 1,
-      "textures": "textures/blocks/water_flow"
+    "pink_petals": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/pink_petals", "weight": 80 },
+          { "path": "textures/blocks/pink_petals1", "weight": 13 },
+          { "path": "textures/blocks/pink_petals2", "weight": 7 }
+        ]
+      }
     },
-    "still_water_grey": {
-      "textures": "textures/blocks/water_still_grey"
+    "wildflowers": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/wildflowers", "weight": 80 },
+          { "path": "textures/blocks/wildflowers1", "weight": 13 },
+          { "path": "textures/blocks/wildflowers2", "weight": 7 }
+        ]
+      }
     },
-    "still_water": {
-      "textures": "textures/blocks/water_still"
+    "azalea_leaves_flowered": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/azalea_leaves_flowers", "weight": 60 },
+          { "path": "textures/blocks/azalea_leaves_flowers1", "weight": 10 },
+          { "path": "textures/blocks/azalea_leaves_flowers2", "weight": 10 },
+          { "path": "textures/blocks/azalea_leaves_flowers3", "weight": 10 },
+          { "path": "textures/blocks/azalea_leaves_flowers4", "weight": 10 }
+        ]
+      }
     },
-    "cauldron_water": {
-      "textures": "textures/blocks/cauldron_water"
+    "big_oak_leaves": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/leaves_big_oak", "weight": 98 },
+          { "path": "textures/blocks/leaves_big_oak1", "weight": 2 }
+        ]
+      }
     },
+    "oak_leaves": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/leaves_oak", "weight": 98 },
+          { "path": "textures/blocks/leaves_oak1", "weight": 2 }
+        ]
+      }
+    },
+    "birch_leaves": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/leaves_birch", "weight": 98 },
+          { "path": "textures/blocks/leaves_birch1", "weight": 2 }
+        ]
+      }
+    },
+    "acacia_leaves": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/leaves_acacia", "weight": 99 },
+          { "path": "textures/blocks/leaves_acacia1", "weight": 1 }
+        ]
+      }
+    },
+    "jungle_leaves": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/leaves_jungle", "weight": 95 },
+          { "path": "textures/blocks/leaves_jungle1", "weight": 5 }
+        ]
+      }
+    },
+    "spruce_leaves": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/leaves_spruce", "weight": 792 },
+          { "path": "textures/blocks/leaves_spruce1", "weight": 1 },
+          { "path": "textures/blocks/leaves_spruce2", "weight": 1 },
+          { "path": "textures/blocks/leaves_spruce3", "weight": 2 },
+          { "path": "textures/blocks/leaves_spruce4", "weight": 2 },
+          { "path": "textures/blocks/leaves_spruce5", "weight": 2 }
+        ]
+      }
+    },
+    "mangrove_leaves": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/mangrove_leaves", "weight": 97 },
+          { "path": "textures/blocks/mangrove_leaves1", "weight": 1 },
+          { "path": "textures/blocks/mangrove_leaves2", "weight": 1 },
+          { "path": "textures/blocks/mangrove_leaves3", "weight": 1 }
+        ]
+      }
+    },
+    "pale_oak_leaves": {
+      "textures": {
+        "variations": [
+          { "path": "textures/blocks/pale_oak_leaves", "weight": 98 },
+          { "path": "textures/blocks/pale_oak_leaves1", "weight": 2 }
+        ]
+      }
+    }
+  }
 }

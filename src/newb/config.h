@@ -100,7 +100,7 @@
 #define NL_WATER_TRANSPARENCY 0.2 // 0.0 transparent ~ 1.0 normal
 #define NL_WATER_BUMP 0.001        // 0.001 plain ~ 0.2 bumpy water
 #define NL_WATER_WAVE_SPEED  0.2  // 0.2 calm ~ 2.0 turbulent
-#define NL_WATER_TEX_OPACITY 1.0  // 0.0 plain water ~ 1.0 vanilla water texture
+#define NL_WATER_TEX_OPACITY 0.0  // 0.0 plain water ~ 1.0 vanilla water texture
 #define NL_WATER_WAVE             // [toggle] wave effect
 #define NL_WATER_CLOUD_REFLECTION // [toggle] simple clouds/aurora reflection
 #define NL_WATER_REFL_MASK      // [toggle] fake water reflection mask
@@ -190,7 +190,7 @@
 
 /* Entity (Actor, ItemInHand) */
 #define NL_ENTITY_BRIGHTNESS     0.4 // 0.1 dark ~ 1.6 bright
-#define NL_ENTITY_EDGE_HIGHLIGHT 0.0 // 0.0 no highlight ~ 1.6 bright highlight
+#define NL_ENTITY_EDGE_HIGHLIGHT 0.1 // 0.0 no highlight ~ 1.6 bright highlight
 
 /* Weather particles */
 #define NL_WEATHER_SPECK 0.0         // [toggle] 0.0 vanilla texture ~ 1.0 soft speck
@@ -198,7 +198,7 @@
 #define NL_WEATHER_PARTICLE_SIZE 1.0 // 0.5 tiny ~ 4.0 large
 
 /* Lava effects */
-//#define NL_LAVA_NOISE            // [toggle] darken lava in certain regions
+#define NL_LAVA_NOISE            // [toggle] darken lava in certain regions
 #define NL_LAVA_NOISE_BUMP 1.0 // [toggle] 0.1 subtle ~ 0.8 massive waves
 #define NL_LAVA_NOISE_SPEED 0.1 // 0.0 still ~ 0.1 fast
 

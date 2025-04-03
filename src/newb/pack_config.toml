@@ -1,15 +1,15 @@
-name = "Newb X Mashi v15.11 (Bare Bones)"
+name = "Newb X Mashi v15.11"
 version = [0, 15, 11]
 min_supported_mc_version = [1, 21, 20]
 description = '''
 §c%w
-§7- Note : In this version, there's no glowing ore and any blocks!
+§7- Note : Some bug(s) may still haven't fixed yet
 %v
 §3https://devendrn.github.io/newb-shader/
 ''' # %w = patch warning, %v = version
 authors = ["mashind", "devendrn"]
 url = "https://devendrn.github.io/newb-shader/"
-uuid = "ed6fb4b1-12a4-4de9-bdd2-9d933b3cfef5" # Use https://www.uuidgenerator.net/version4
+uuid = "9dc15800-8161-4d8d-99df-c8911deba36c" # Use https://www.uuidgenerator.net/version4
 materials = ["Sky", "RenderChunk", "EndSky", "Clouds", "SunMoon", "Weather", "Stars", "Actor", "ItemInHandColor", "ItemInHandTextured"]
 
 [info] 
@@ -24,8 +24,6 @@ Contact (Discord Server): https://discord.gg/newb-community-844591537430069279
 ''' # %a = authors
 credits = '''
 Credit the EndSky by @jcgaming7125_17548 (discord)
-
-Credit the Hard Shadow by @kuridev2010 (discord)
 '''
 
 # subpacks are arranged in left to right order
@@ -72,6 +70,14 @@ materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
 description = '''
 Clouds Color Match With Sky Color, 3 Layers Clouds
 '''
+
+[[subpack]]
+define = "SIMPLES"
+materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+description = '''
+No Glowing Flowers, No Fake Fireflies Leaves, 1 Clouds Layer
+'''
+
 
 [[subpack]]
 define = "LAYER_CLOUD_1"
