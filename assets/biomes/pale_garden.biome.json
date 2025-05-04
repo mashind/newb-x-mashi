@@ -1,0 +1,13 @@
+{
+  "format_version": "1.21.0",
+  "minecraft:client_biome": {
+    "description": {
+      "identifier": "pale_garden"
+    },
+    "components": {
+      "minecraft:fog_appearance": {
+        "fog_identifier": "newb:pale_garden_fog"
+      }
+    }
+  }
+}

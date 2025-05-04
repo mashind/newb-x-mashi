@@ -26,11 +26,12 @@ float nlRenderGodRayIntensity(vec3 cPos, vec3 worldPos, float t, vec2 uv1, float
   vec3 nrmof = normalize(worldPos);
 
   float u = nrmof.z/length(nrmof.zy);
-  float diff = dot(offset,vec3(0.1,0.2,1.0)) + 0.07*t;
+  vec3 colorVariation = vec3(1.5, 0.35, 1.0);
+  float diff = dot(offset, colorVariation) + 0.07 * t;
   float mask = nrmof.x*nrmof.x;
 
-  float vol = sin(7.0*u + 1.5*diff)*sin(3.0*u + diff);
-  vol *= vol*mask*uv1.y*(1.0-mask*mask);
+  float vol = sin(14.0 * u + 1.5 * diff) * sin(6.0 * u + diff);
+  vol *= 4.0 * vol * mask * uv1.y * (1.0 - mask * mask);
   vol *= relativeDist*relativeDist;
 
   // dawn/dusk mask
