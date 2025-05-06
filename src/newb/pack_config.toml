@@ -1,20 +1,20 @@
-name = "Newb X Mashi v15.11"
-version = [0, 15, 11]
+name = "Newb X Legacy"
+version = [0, 15, 0]
 min_supported_mc_version = [1, 21, 20]
 description = '''
 §c%w
-§7- Note : Some bug(s) may still haven't fixed yet
+§7- An enchanced vanilla shader for Minecraft!
 %v
 §3https://devendrn.github.io/newb-shader/
 ''' # %w = patch warning, %v = version
-authors = ["mashind", "devendrn"]
+authors = ["devendrn"]
 url = "https://devendrn.github.io/newb-shader/"
-uuid = "9dc15800-8161-4d8d-99df-c8911deba36c" # Use https://www.uuidgenerator.net/version4
-materials = ["Sky", "RenderChunk", "EndSky", "Clouds", "SunMoon", "Weather", "Stars", "Actor", "ItemInHandColor", "ItemInHandTextured"]
+uuid = "95f774cf-4afa-73e7-a21a-72146307b1d2" # Use https://www.uuidgenerator.net/version4
+materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
 
 [info] 
 copyright = '''
-Copyright © 2024 %a, and "Newb Shader" Contributors
+Copyright © 2025 %a, and "Newb Shader" Contributors
 
 This compiled "Newb Shader" resource pack (source code: https://github.com/devendrn/newb-x-mcbe under MIT License) is licensed under CC BY-ND 4.0 (https://creativecommons.org/licenses/by-nd/4.0/). Redistribute only unmodified copies with proper attribution to "Newb Shader" and variant creators (if any). Do not distribute derivatives.
 
@@ -23,79 +23,56 @@ You can compile the shader from source and distribute the result under your own 
 Contact (Discord Server): https://discord.gg/newb-community-844591537430069279
 ''' # %a = authors
 credits = '''
-Credit the EndSky by @jcgaming7125_17548 (discord)
 '''
 
 # subpacks are arranged in left to right order
 # right-most subpack is enabled by default
 
 [[subpack]]
-define = "NO_WAVE_FOG_1"
-materials = ["RenderChunk", "Clouds", "ActorGlint", "ItemInHandColorGlint"]
+define = "ROUNDED_CLOUDS"
+materials = ["Clouds"]
 description = '''
-No fog and wave effects, 1 Layer Clouds
+Rounded Clouds
 '''
 
 [[subpack]]
-define = "NO_WAVE_FOG_2"
-materials = ["RenderChunk", "Clouds", "ActorGlint", "ItemInHandColorGlint"]
+define = "BOX_CLOUDS"
+materials = ["Clouds", "RenderChunk"]
 description = '''
-No fog and wave effects, 2 Layers Clouds
+Box Clouds
 '''
 
 [[subpack]]
-define = "NO_WAVE_FOG_3"
-materials = ["RenderChunk", "Clouds", "ActorGlint", "ItemInHandColorGlint"]
+define = "CHUNK_ANIM"
+materials = ["RenderChunk"]
 description = '''
-No fog and wave effects, 3 Layers Clouds
+Chunk loading animation
 '''
 
 [[subpack]]
-define = "DEFAULT_1"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+define = "NO_WAVE_NO_FOG"
+materials = ["RenderChunk"]
 description = '''
-Clouds Color Match With Sky Color, 1 Layer Clouds
+No fog and wave effects
 '''
 
 [[subpack]]
-define = "DEFAULT_2"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+define = "NO_FOG"
+materials = ["RenderChunk"]
 description = '''
-Clouds Color Match With Sky Color, 2 Layers Clouds
+No fog effect
 '''
 
 [[subpack]]
-define = "DEFAULT_3"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+define = "NO_WAVE"
+materials = ["RenderChunk"]
 description = '''
-Clouds Color Match With Sky Color, 3 Layers Clouds
+No wave effects
 '''
 
 [[subpack]]
-define = "SIMPLES"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+define = "DEFAULT"
+materials = []
 description = '''
-No Glowing Flowers, No Fake Fireflies Leaves, 1 Clouds Layer
-'''
-
-
-[[subpack]]
-define = "LAYER_CLOUD_1"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
-description = '''
-1 Layer Clouds
-'''
-
-[[subpack]]
-define = "LAYER_CLOUD_2"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
-description = '''
-2 Layers Clouds
-'''
-
-[[subpack]]
-define = "LAYER_CLOUD_3"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
-description = '''
-3 Layers Clouds
+Default
 '''

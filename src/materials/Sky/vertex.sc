@@ -3,42 +3,6 @@
   $output v_fogColor, v_worldPos, v_underwaterRainTime
 #endif
 
-#ifdef DEFAULT_1
-  #pragma message "Compiling with DEFAULT_1"  // Debug check
-  #define DEFAULT_1
-  #include <newb/config.h>
-#endif
-
-#ifdef DEFAULT_2
-  #pragma message "Compiling with DEFAULT_2"  // Debug check
-  #define DEFAULT_2
-  #include <newb/config.h>
-#endif
-
-#ifdef DEFAULT_3
-  #pragma message "Compiling with DEFAULT_3"  // Debug check
-  #define DEFAULT_3
-  #include <newb/config.h>
-#endif
-
-#ifdef LAYER_CLOUD_1
-  #pragma message "Compiling with LAYER_CLOUD_1"  // Debug check
-  #define LAYER_CLOUD_1
-  #include <newb/config.h>
-#endif
-
-#ifdef LAYER_CLOUD_2
-  #pragma message "Compiling with LAYER_CLOUD_2"  // Debug check
-  #define LAYER_CLOUD_2
-  #include <newb/config.h>
-#endif
-
-#ifdef LAYER_CLOUD_3
-  #pragma message "Compiling with LAYER_CLOUD_3"  // Debug check
-  #define LAYER_CLOUD_3
-  #include <newb/config.h>
-#endif
-
 #include <bgfx_shader.sh>
 
 #ifndef INSTANCING
