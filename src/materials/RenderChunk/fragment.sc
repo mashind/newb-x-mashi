@@ -5,6 +5,7 @@ $input v_color0, v_color1, v_fog, v_refl, v_texcoord0, v_lightmapUV, v_extra, v_
 
 // Precision qualifiers for OpenGL ES (Android)
 #ifdef GL_ES
+#extension GL_OES_standard_derivatives : enable
 precision mediump float;
 #endif
 
@@ -120,7 +121,7 @@ void main() {
     #ifdef SHADOW_ENABLED
         float day = pow(max(min(1.0 - FogColor.r * 1.2, 1.0), 0.0), 0.4);
         float night = pow(max(min(1.0 - FogColor.r * 1.5, 1.0), 0.0), 1.2);
-        vec3 N = normalize(cross(ddx(v_position), ddy(-v_position)));
+        vec3 N = normalize(cross(dFdx(v_position), dFdy(-v_position)));
         diffuse.rgb *= dirlight(N, rain, night);
     #endif
 
