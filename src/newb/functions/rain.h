@@ -65,7 +65,7 @@ vec4 nlRefl(
     }
 
     // darken wet parts
-    color.rgb *= 1.0 - 0.4*wetness*env.rainFactor;
+    color.rgb *= 1.0 - 0.8*wetness*env.rainFactor;
 
   #ifndef NL_GROUND_REFL
   }
