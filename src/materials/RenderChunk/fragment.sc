@@ -3,38 +3,29 @@ $input v_color0, v_color1, v_fog, v_refl, v_texcoord0, v_lightmapUV, v_extra, v_
 #include <bgfx_shader.sh>
 #include <newb/main.sh>
 
-// Precision qualifiers for OpenGL ES (Android)
-#ifdef GL_ES
-#extension GL_OES_standard_derivatives : enable
-precision mediump float;
-#endif
-
-// Samplers
 SAMPLER2D_AUTOREG(s_MatTexture);
 SAMPLER2D_AUTOREG(s_SeasonsTexture);
 SAMPLER2D_AUTOREG(s_LightMapTexture);
 
-// Uniforms
 uniform vec4 FogColor;
 uniform vec4 ViewPositionAndTime;
 uniform vec4 FogAndDistanceControl;
 
-// Compute rain value
-float computeRain(float fogControlX) {
-    return mix(smoothstep(0.66, 0.3, fogControlX), 0.0, step(fogControlX, 0.0));
-}
+float rain = mix(smoothstep(0.66, 0.3, FogAndDistanceControl.x), 0.0, step(FogAndDistanceControl.x, 0.0));
 
 #ifdef SHADOW_ENABLED
+
 float dirlight(vec3 normal, float rain, float night) {
-    float shadowStrength = 1.5;
-    float dirfac = mix(0.5, 0.25, night);
+    float shadowStrength = 1.5; // Adjust: >1.0 for darker shadows, <1.0 for brighter shadows
+    float dirfac = mix(0.6, 0.3, night);
     dirfac = mix(dirfac, 0.0, rain);
-    float dir = 1.0 - (dirfac * shadowStrength) * abs(normal.z);
+    float dir = 1.0 - (dirfac * shadowStrength) * abs(normal.z); // Z-axis
     return dir;
 }
 #endif
 
 #ifdef RAIN_ENABLED
+
 #define DROP_NUMBER 14
 
 float stickyRaindrop(vec2 uv, vec2 center, float baseSize) {
@@ -46,7 +37,7 @@ float stickyRaindrop(vec2 uv, vec2 center, float baseSize) {
 vec3 RainDrop(vec4 diffuse, float time, vec2 uv) {
     vec3 baseColor = diffuse.rgb;
     vec3 kol = baseColor;
-    const int drops = DROP_NUMBER;
+    const int drops = DROP_NUMBER; // Now DROP_NUMBER is defined above
 
     for (int i = 0; i < drops; i++) {
         float fi = float(i);
@@ -58,7 +49,7 @@ vec3 RainDrop(vec4 diffuse, float time, vec2 uv) {
         float baseSize = (0.03 + 0.015 * fract(sin(fi * 5.21) * 1000.0)) * (2460.0 / 1650.0);
         float dropMask = stickyRaindrop(uv, dropPos, baseSize);
         vec3 dropColor = vec3(0.9, 0.9, 0.9);
-        kol = mix(kol, dropColor, dropMask * 0.55);
+        kol = mix(kol, dropColor, dropMask * 0.8);
     }
     return kol;
 }
@@ -115,25 +106,23 @@ void main() {
         }
     }
 
-    // Compute rain once for use in both SHADOW_ENABLED and RAIN_ENABLED blocks
-    float rain = computeRain(FogAndDistanceControl.x);
-
     #ifdef SHADOW_ENABLED
-        float day = pow(max(min(1.0 - FogColor.r * 1.2, 1.0), 0.0), 0.4);
-        float night = pow(max(min(1.0 - FogColor.r * 1.5, 1.0), 0.0), 1.2);
-        vec3 N = normalize(cross(dFdx(v_position), dFdy(-v_position)));
-        diffuse.rgb *= dirlight(N, rain, night);
+    float day = pow(max(min(1.0 - FogColor.r * 1.2, 1.0), 0.0), 0.4);
+    float night = pow(max(min(1.0 - FogColor.r * 1.5, 1.0), 0.0), 1.2);
+    float dusk = max(FogColor.r - FogColor.b, 0.0);
+    vec3 N = normalize(cross(dFdx(v_position), dFdy(v_position)));
+    diffuse.rgb *= dirlight(N, rain, night);
     #endif
 
     diffuse.rgb = mix(diffuse.rgb, v_fog.rgb, v_fog.a);
 
     #ifdef RAIN_ENABLED
-        float time = ViewPositionAndTime.w;
-        if (rain > 0.0) {
-            vec2 uv = gl_FragCoord.xy / vec2(1080.0, 2460.0);
-            uv.x -= 0.7;
-            diffuse.rgb += RainDrop(diffuse, time, uv) * rain;
-        }
+    float time = ViewPositionAndTime.w;
+    if (rain > 0.0) {
+        vec2 uv = gl_FragCoord.xy / vec2(1080.0, 2460.0);
+        uv.x -= 0.7;
+        diffuse.rgb += RainDrop(diffuse, time, uv) * rain;
+    }
     #endif
 
     diffuse.rgb = colorCorrection(diffuse.rgb);
