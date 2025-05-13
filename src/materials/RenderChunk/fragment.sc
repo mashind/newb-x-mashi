@@ -11,7 +11,7 @@ uniform vec4 FogColor;
 uniform vec4 ViewPositionAndTime;
 uniform vec4 FogAndDistanceControl;
 
-float rain = mix(smoothstep(0.66, 0.3, FogAndDistanceControl.x), 0.0, step(FogAndDistanceControl.x, 0.0));
+float rain;
 
 #ifdef SHADOW_ENABLED
 
@@ -113,7 +113,9 @@ void main() {
     vec3 N = normalize(cross(dFdx(v_position), dFdy(v_position)));
     diffuse.rgb *= dirlight(N, rain, night);
     #endif
-
+    
+    rain = mix(smoothstep(0.66, 0.3, FogAndDistanceControl.x), 0.0, step(FogAndDistanceControl.x, 0.0));
+    
     diffuse.rgb = mix(diffuse.rgb, v_fog.rgb, v_fog.a);
 
     #ifdef RAIN_ENABLED
