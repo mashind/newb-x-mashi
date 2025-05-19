@@ -16,7 +16,7 @@ Recommend Minecraft Settings
 authors = ["mashind", "devendrn"]
 url = "https://devendrn.github.io/newb-shader/"
 uuid = "9dc15800-8161-4d8d-99df-c8911deba36c" # Use https://www.uuidgenerator.net/version4
-materials = ["Sky", "RenderChunk", "EndSky", "Clouds", "SunMoon", "Weather", "Stars"]
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds", "SunMoon", "Weather", "Stars", "Actor", "ItemInHandColor", "ItemInHandTextured"]
 
 [info] 
 copyright = '''
@@ -36,22 +36,72 @@ Credit the EndSky by @jcgaming7125_17548 (discord)
 # right-most subpack is enabled by default
 
 [[subpack]]
+define = "NO_WAVE_FOG_1"
+materials = ["RenderChunk", "Clouds", "ActorGlint", "ItemInHandColorGlint"]
+description = '''
+No fog and wave effects, 1 Layer Clouds
+'''
+
+[[subpack]]
+define = "NO_WAVE_FOG_2"
+materials = ["RenderChunk", "Clouds", "ActorGlint", "ItemInHandColorGlint"]
+description = '''
+No fog and wave effects, 2 Layers Clouds
+'''
+
+[[subpack]]
+define = "NO_WAVE_FOG_3"
+materials = ["RenderChunk", "Clouds", "ActorGlint", "ItemInHandColorGlint"]
+description = '''
+No fog and wave effects, 3 Layers Clouds
+'''
+
+[[subpack]]
+define = "DEFAULT_1"
+materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+description = '''
+Clouds Color Match With Sky Color, 1 Layer Clouds
+'''
+
+[[subpack]]
+define = "DEFAULT_2"
+materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+description = '''
+Clouds Color Match With Sky Color, 2 Layers Clouds
+'''
+
+[[subpack]]
+define = "DEFAULT_3"
+materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+description = '''
+Clouds Color Match With Sky Color, 3 Layers Clouds
+'''
+
+[[subpack]]
+define = "SIMPLES"
+materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+description = '''
+No Glowing Flowers, No Fake Fireflies Leaves, 1 Clouds Layer
+'''
+
+
+[[subpack]]
 define = "LAYER_CLOUD_1"
-materials = ["Clouds"]
+materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
 description = '''
 1 Layer Clouds
 '''
 
 [[subpack]]
 define = "LAYER_CLOUD_2"
-materials = ["Clouds"]
+materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
 description = '''
 2 Layers Clouds
 '''
 
 [[subpack]]
 define = "LAYER_CLOUD_3"
-materials = ["Clouds"]
+materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
 description = '''
 3 Layers Clouds
 '''
