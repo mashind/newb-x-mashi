@@ -34,7 +34,7 @@ vec3 getSkyFactors(vec3 FOG_COLOR) {
   vec3 factors = vec3(
     max(FOG_COLOR.r*0.6, max(FOG_COLOR.g, FOG_COLOR.b)), // intensity val
     1.5*max(FOG_COLOR.r-FOG_COLOR.b, 0.0), // viewing sun
-    min(FOG_COLOR.g, 0.3) // rain brightness
+    min(FOG_COLOR.g, 0.275) // rain brightness
   );
 
   factors.z *= factors.z;
@@ -124,8 +124,10 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 viewDir, float t) {
     float g = h * h;
     g *= g;
 
+    // Base sky color with clamped mix factor to prevent issues
     vec3 sky = mix(zenithCol, horizonCol, clamp(f * f, 0.0, 1.0));
 
+    // Ensure streaks blend smoothly with sky instead of adding new colors
     sky += 0.05 * streaks * sky; 
 
     return sky;

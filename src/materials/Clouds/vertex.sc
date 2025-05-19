@@ -60,7 +60,7 @@ void main() {
   } else if (green > 0.3) { // Layer 2 (g=153/255 ≈ 0.6)
     #ifdef NL_CLOUD0_MULTILAYER
       worldPos.y += 96.0;
-      color.a *= 0.6;
+      color.a *= 0.5;
     #else
       worldPos = vec3(0.0, 0.0, 0.0);
       color.a = 0.0;

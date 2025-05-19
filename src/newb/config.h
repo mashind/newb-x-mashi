@@ -42,7 +42,6 @@
 #define NL_NIGHT_BRIGHTNESS 0.001 // 0.0 dark ~ 2.0 bright
 #define NL_CAVE_BRIGHTNESS 0.001  // 0.0 dark ~ 2.0 bright
 #define NL_SHADOW_INTENSITY 1.0 // 0.0 no shadow ~ 1.0 strong shadow
-#define SHADOW_ENABLED
 #define NL_BLINKING_TORCH     // [toggle] flickering light
 //#define NL_CLOUD_SHADOW       // [toggle] cloud shadow (simple clouds only)
 
@@ -63,7 +62,7 @@
 
 /* Fog */
 #define NL_FOG 1.0                // [toggle] 0.1 subtle ~ 1.0 blend with sky completely
-#define NL_MIST_DENSITY 0.6      // 0.0 no mist ~ 1.0 misty
+#define NL_MIST_DENSITY 0.625      // 0.0 no mist ~ 1.0 misty
 #define NL_RAIN_MIST_OPACITY 0.3 // [toggle] 0.04 very subtle ~ 0.5 thick rain mist blow
 //#define NL_CLOUDY_FOG 0.1         // [toggle] 0.0 subtle - 0.8 dense fog clouds
 
@@ -74,14 +73,14 @@
 #define NL_NIGHT_HORIZON_COL vec3(0.0,0.025,0.15)
 #define NL_RAIN_ZENITH_COL   vec3(0.5,0.5,0.5)
 #define NL_RAIN_HORIZON_COL  vec3(0.75,0.75,0.75)
-#define NL_END_ZENITH_COL    vec3(0.0125,0.0,0.0025)
-#define NL_END_HORIZON_COL   vec3(0.285,0.05,0.375)
+#define NL_END_ZENITH_COL    vec3(0.0115,0.0,0.0015)
+#define NL_END_HORIZON_COL   vec3(0.275,0.05,0.375)
 #define NL_DAWN_ZENITH_COL   vec3(0.015,0.045,0.075)
 #define NL_DAWN_HORIZON_COL  vec3(1.0,0.355,0.0)
 #define NL_DAWN_EDGE_COL     vec3(1.0,0.325,0.0)
 
 /* Rainbow */
-#define NL_RAINBOW         // [toggle] enable rainbow in sky
+//#define NL_RAINBOW         // [toggle] enable rainbow in sky
 #define NL_RAINBOW_CLEAR 0.0 // 0.3 subtle ~ 1.7 bright during clear
 #define NL_RAINBOW_RAIN 1.0  // 0.5 subtle ~ 2.0 bright during rain
 
@@ -185,7 +184,7 @@
 #define NL_GODRAY 0.825 // [toggle] 0.1 subtle ~ 0.8 strong
 
 /* Sky reflection */
-//#define NL_GROUND_REFL 0.4       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky
+//#define NL_GROUND_REFL 0.25       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky
 #define NL_GROUND_RAIN_WETNESS 1.0 // 0.0 no wetness ~ 1.0 fully wet blocks when raining
 #define NL_GROUND_RAIN_PUDDLES 0.7 // 0.0 no puddles ~ 1.0 puddles
 //#define NL_GROUND_AURORA_REFL    // [toggle] aurora reflection on ground
@@ -198,7 +197,6 @@
 #define NL_WEATHER_SPECK 0.0         // [toggle] 0.0 vanilla texture ~ 1.0 soft speck
 #define NL_WEATHER_RAIN_SLANT 4.0    // 1.0 minimal ~ 8.0 violent
 #define NL_WEATHER_PARTICLE_SIZE 1.0 // 0.5 tiny ~ 4.0 large
-#define RAIN_ENABLED
 
 /* Lava effects */
 #define NL_LAVA_NOISE            // [toggle] darken lava in certain regions

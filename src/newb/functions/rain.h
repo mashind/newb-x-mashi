@@ -26,24 +26,23 @@ vec4 nlRefl(
     float wetness = lit.y*lit.y;
 
     // clip reflection when far (better performance)
-    float endDist = renderDist*0.6;
+    float endDist = renderDist*0.5;
     if (camDist < endDist) {
       float cosR = max(viewDir.y, 0.0);
       float puddles = max(1.0 - NL_GROUND_RAIN_PUDDLES*fastRand(tiledCpos.xz), 0.0);
 
-      #ifndef NL_GROUND_REFL
-        wetness *= puddles;
-        float reflective = wetness*env.rainFactor*NL_GROUND_RAIN_WETNESS;
-      #else
-        float reflective = NL_GROUND_REFL;
-        if (!env.end && !env.nether) {
-          // only multiply with wetness in overworld
-          reflective *= wetness;
-        } 
-
-        wetness *= puddles;
-        reflective = mix(reflective, wetness, env.rainFactor);
-      #endif
+#ifndef NL_GROUND_REFL
+  wetness *= puddles;
+  float reflective = wetness * env.rainFactor * NL_GROUND_RAIN_WETNESS;
+#else
+  float reflective = 0.0;
+  if (env.end) {
+    reflective = NL_GROUND_REFL;
+  } else {
+    reflective = wetness * env.rainFactor * NL_GROUND_RAIN_WETNESS;
+  }
+  wetness *= puddles;
+#endif
 
       if (wPos.y < 0.0) {
         wetRefl.rgb = getSkyRefl(skycol, env, viewDir, FOG_COLOR, t);

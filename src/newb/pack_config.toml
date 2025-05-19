@@ -1,9 +1,15 @@
-name = "Newb X Mashi v15.22"
-version = [0, 15, 22]
+name = "Newb X Mashi v15.12"
+version = [0, 15, 12]
 min_supported_mc_version = [1, 21, 20]
 description = '''
 §c%w
 §7- Note : Some bug(s) may still haven't fixed yet
+
+Recommend Minecraft Settings
+- 0 Brightness
+- 8 RenderChunk
+- 70 FOV
+
 %v
 §3https://devendrn.github.io/newb-shader/
 ''' # %w = patch warning, %v = version
