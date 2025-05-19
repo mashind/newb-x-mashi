@@ -21,6 +21,12 @@ void main() {
       discard;
     }
   #endif
+  
+  float shadow = smoothstep(0.875,0.860, pow(v_lightmapUV.y,2.0));
+  
+  shadow = mix(shadow, 0.0, pow(v_lightmapUV.x * 1.2, 6.0));
+  
+  diffuse.rgb *= 1.0-0.4*shadow;
 
   #if defined(SEASONS) && (defined(OPAQUE) || defined(ALPHA_TEST))
     diffuse.rgb *= mix(vec3(1.0,1.0,1.0), texture2D(s_SeasonsTexture, v_color1.xy).rgb * 2.0, v_color1.z);

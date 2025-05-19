@@ -1,0 +1,26 @@
+{
+   "water" : {
+      "textures" : {
+         "down" : "still_water_grey",
+         "side" : "flowing_water_grey",
+         "up" : "still_water_grey"
+      }
+   },
+   "flowing_water" : {
+      "textures" : {
+         "down" : "still_water_grey",
+         "side" : "flowing_water_grey",
+         "up" : "still_water_grey"
+      }
+   },
+   "cauldron" : {
+      "textures" : {
+         "down" : "cauldron_bottom",
+         "east" : "still_water_grey",
+         "north" : "cauldron_side",
+         "south" : "cauldron_inner",
+         "up" : "cauldron_top",
+         "west" : "cauldron_water"
+      }
+   }
+}
