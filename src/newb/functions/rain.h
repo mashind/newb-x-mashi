@@ -26,7 +26,7 @@ vec4 nlRefl(
     float wetness = lit.y*lit.y;
 
     // clip reflection when far (better performance)
-    float endDist = renderDist*0.5;
+    float endDist = renderDist*0.525;
     if (camDist < endDist) {
       float cosR = max(viewDir.y, 0.0);
       float puddles = max(1.0 - NL_GROUND_RAIN_PUDDLES*fastRand(tiledCpos.xz), 0.0);

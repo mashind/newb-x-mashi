@@ -1,11 +1,9 @@
-name = "Newb X Mashi v15.12 Bare Bones"
-version = [0, 15, 12]
+name = "Newb X Mashi v15.22"
+version = [0, 15, 22]
 min_supported_mc_version = [1, 21, 20]
 description = '''
 §c%w
-§7- Note : 
-- In this version, there's no glowing ore and any blocks!
-- Some bug(s) may still haven't fixed yet
+§7- Note : Some bug(s) may still haven't fixed yet
 
 Recommend Minecraft Settings
 - 0 Brightness
@@ -17,8 +15,8 @@ Recommend Minecraft Settings
 ''' # %w = patch warning, %v = version
 authors = ["mashind", "devendrn"]
 url = "https://devendrn.github.io/newb-shader/"
-uuid = "ed6fb4b1-12a4-4de9-bdd2-9d933b3cfef5" # Use https://www.uuidgenerator.net/version4
-materials = ["Sky", "RenderChunk", "EndSky", "Clouds", "SunMoon", "Weather", "Stars", "Actor", "ItemInHandColor", "ItemInHandTextured"]
+uuid = "f3ed5ff0-c4ca-4af9-9a6b-4ce86cde662b" # Use https://www.uuidgenerator.net/version4
+materials = ["Sky", "RenderChunk", "EndSky", "Clouds", "SunMoon", "Weather", "Stars"]
 
 [info] 
 copyright = '''
@@ -32,72 +30,28 @@ Contact (Discord Server): https://discord.gg/newb-community-844591537430069279
 ''' # %a = authors
 credits = '''
 Credit the EndSky by @jcgaming7125_17548 (discord)
-
-Credit the Hard Shadow by @kuridev2010 (discord)
 '''
 
 # subpacks are arranged in left to right order
 # right-most subpack is enabled by default
 
 [[subpack]]
-define = "NO_WAVE_FOG_1"
-materials = ["RenderChunk", "Clouds", "ActorGlint", "ItemInHandColorGlint"]
-description = '''
-No fog and wave effects, 1 Layer Clouds
-'''
-
-[[subpack]]
-define = "NO_WAVE_FOG_2"
-materials = ["RenderChunk", "Clouds", "ActorGlint", "ItemInHandColorGlint"]
-description = '''
-No fog and wave effects, 2 Layers Clouds
-'''
-
-[[subpack]]
-define = "NO_WAVE_FOG_3"
-materials = ["RenderChunk", "Clouds", "ActorGlint", "ItemInHandColorGlint"]
-description = '''
-No fog and wave effects, 3 Layers Clouds
-'''
-
-[[subpack]]
-define = "DEFAULT_1"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
-description = '''
-Clouds Color Match With Sky Color, 1 Layer Clouds
-'''
-
-[[subpack]]
-define = "DEFAULT_2"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
-description = '''
-Clouds Color Match With Sky Color, 2 Layers Clouds
-'''
-
-[[subpack]]
-define = "DEFAULT_3"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
-description = '''
-Clouds Color Match With Sky Color, 3 Layers Clouds
-'''
-
-[[subpack]]
 define = "LAYER_CLOUD_1"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+materials = ["Clouds"]
 description = '''
 1 Layer Clouds
 '''
 
 [[subpack]]
 define = "LAYER_CLOUD_2"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+materials = ["Clouds"]
 description = '''
 2 Layers Clouds
 '''
 
 [[subpack]]
 define = "LAYER_CLOUD_3"
-materials = ["Clouds", "ActorGlint", "ItemInHandColorGlint"]
+materials = ["Clouds"]
 description = '''
 3 Layers Clouds
 '''

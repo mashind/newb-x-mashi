@@ -52,7 +52,7 @@
 
 /* Ambient light on terrain (light that is added everywhere) */
 #define NL_NETHER_AMBIENT vec3(0.25,0.25,0.25)
-#define NL_END_AMBIENT    vec3(0.05,0.025,0.1)
+#define NL_END_AMBIENT    vec3(0.05,0.025,0.01)
 
 /* Torch colors */
 #define NL_OVERWORLD_TORCH_COL  vec3(1.0,0.55,0.1)
@@ -80,9 +80,9 @@
 #define NL_DAWN_EDGE_COL     vec3(1.0,0.325,0.0)
 
 /* Rainbow */
-//#define NL_RAINBOW         // [toggle] enable rainbow in sky
+#define NL_RAINBOW         // [toggle] enable rainbow in sky
 #define NL_RAINBOW_CLEAR 0.0 // 0.3 subtle ~ 1.7 bright during clear
-#define NL_RAINBOW_RAIN 1.0  // 0.5 subtle ~ 2.0 bright during rain
+#define NL_RAINBOW_RAIN 0.6  // 0.5 subtle ~ 2.0 bright during rain
 
 /* Ore glow intensity */
 #define NL_GLOW_TEX 2.3           // 0.4 weak ~ 8.0 bright
@@ -184,7 +184,7 @@
 #define NL_GODRAY 0.825 // [toggle] 0.1 subtle ~ 0.8 strong
 
 /* Sky reflection */
-//#define NL_GROUND_REFL 0.25       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky
+#define NL_GROUND_REFL 0.225       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky
 #define NL_GROUND_RAIN_WETNESS 1.0 // 0.0 no wetness ~ 1.0 fully wet blocks when raining
 #define NL_GROUND_RAIN_PUDDLES 0.7 // 0.0 no puddles ~ 1.0 puddles
 //#define NL_GROUND_AURORA_REFL    // [toggle] aurora reflection on ground
