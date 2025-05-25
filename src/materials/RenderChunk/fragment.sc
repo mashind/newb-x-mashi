@@ -12,7 +12,7 @@ uniform vec4 ViewPositionAndTime;
 uniform vec4 FogAndDistanceControl;
 
 float dirlight(vec3 normal, float rain, float night) {
-    float baseFactor = 0.7; // Base lighting factor
+    float baseFactor = 0.725; // Base lighting factor
     float reduction = (night * 0.25) + (rain * 0.5); // Simplified reduction based on night and rain
     return 1.0 - (baseFactor - reduction) * abs(normal.z); // Direct calculation
 }
@@ -77,7 +77,7 @@ void main() {
     vec4 color = v_color0;
 
     #ifdef ALPHA_TEST
-        if (!gl_FrontFacing || diffuse.a < 0.6) {
+        if (gl_FrontFacing || diffuse.a < 0.6) {
             discard;
         }
     #endif
