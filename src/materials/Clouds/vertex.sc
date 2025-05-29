@@ -37,37 +37,29 @@ void main() {
   #if NL_CLOUD_TYPE <= 2
 
     vec4 color;
-    
-#if NL_CLOUD_TYPE == 0
-  pos.y *= (NL_CLOUD0_THICKNESS + rain * (NL_CLOUD0_RAIN_THICKNESS - NL_CLOUD0_THICKNESS));
-  worldPos = mul(model, vec4(pos, 1.0)).xyz;
 
-  color.rgb = skycol.zenith + skycol.horizonEdge;
-  color.rgb += dot(color.rgb, vec3(0.3, 0.4, 0.3)) * a_position.y;
-  color.rgb *= 1.0 - 0.8 * rain;
-  color.rgb = colorCorrection(color.rgb);
-  color.a = NL_CLOUD0_OPACITY * fog_fade(worldPos.xyz);
+    #if NL_CLOUD_TYPE == 0
+      pos.y *= (NL_CLOUD0_THICKNESS + rain*(NL_CLOUD0_RAIN_THICKNESS - NL_CLOUD0_THICKNESS));
+      worldPos = mul(model, vec4(pos, 1.0)).xyz;
 
-  float green = a_color0.g / a_color0.b;
-  if (green > 0.75) { // Layer 3 (g=230/255 ≈ 0.9)
-    #ifdef NL_CLOUD0_MULTILAYER
-      worldPos.y += 128.0;
-      color.a *= 0.2;
-    #else
-      worldPos = vec3(0.0, 0.0, 0.0);
-      color.a = 0.0;
-    #endif
-  } else if (green > 0.3) { // Layer 2 (g=153/255 ≈ 0.6)
-    #ifdef NL_CLOUD0_MULTILAYER
-      worldPos.y += 96.0;
-      color.a *= 0.5;
-    #else
-      worldPos = vec3(0.0, 0.0, 0.0);
-      color.a = 0.0;
-    #endif
-  }
+      color.rgb = skycol.zenith + skycol.horizonEdge;
+      color.rgb += dot(color.rgb, vec3(0.3,0.4,0.3))*a_position.y;
+      color.rgb *= 1.0 - 0.8*rain;
+      color.rgb = colorCorrection(color.rgb);
+      color.a = NL_CLOUD0_OPACITY * fog_fade(worldPos.xyz);
 
-
+      // clouds.png has two non-overlaping layers:
+      // r=unused, g=layers, b=reference, a=unused
+      // g=0 (layer 0), g=1 (layer 1)
+      bool isL2 = a_color0.g > 0.5 * a_color0.b;
+      if (isL2) {
+        #ifdef NL_CLOUD0_MULTILAYER
+          worldPos.y += 64.0;
+        #else
+          worldPos = vec3(0.0,0.0,0.0);
+          color.a = 0.0;
+        #endif
+      }
     #else
       pos.xz = pos.xz - 32.0;
       pos.y *= 0.01;

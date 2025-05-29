@@ -74,7 +74,7 @@ vec3 nlLighting(
 
     // shadow cast by top light
     float shadow = step(0.93, uv1.y);
-    shadow = max(shadow, (1.0 - NL_SHADOW_INTENSITY + (0.605*NL_SHADOW_INTENSITY*nightFactor))*lit.y);
+    shadow = max(shadow, (1.0 - NL_SHADOW_INTENSITY + (0.6*NL_SHADOW_INTENSITY*nightFactor))*lit.y);
     shadow *= shade > 0.8 ? 1.0 : 0.8;
 
     // shadow cast by simple cloud
@@ -94,7 +94,7 @@ vec3 nlLighting(
   }
 
   // darken at crevices
-  light *= COLOR.g > 0.35 ? 1.0 : 1.0;
+  light *= COLOR.g > 0.35 ? 1.0 : 0.8;
 
   // brighten tree leaves
   if (isTree) {

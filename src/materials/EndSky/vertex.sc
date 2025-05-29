@@ -20,7 +20,7 @@ void main() {
   vec3 pos = mul(model, vec4(a_position, 1.0)).xyz;
 
   // pi/1800 (one complete rotation per hour)
-  highp float t = -0.01*ViewPositionAndTime.w;
+  highp float t = 0.00174532925*ViewPositionAndTime.w;
 
   // rotate skybox
   float sinA = sin(t);

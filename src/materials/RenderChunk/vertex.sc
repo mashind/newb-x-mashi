@@ -2,7 +2,7 @@ $input a_color0, a_position, a_texcoord0, a_texcoord1
 #ifdef INSTANCING
   $input i_data0, i_data1, i_data2, i_data3
 #endif
-$output v_color0, v_color1, v_fog, v_refl, v_texcoord0, v_lightmapUV, v_extra, v_position, v_wpos
+$output v_color0, v_color1, v_fog, v_refl, v_texcoord0, v_lightmapUV, v_extra
 
 #include <bgfx_shader.sh>
 #include <newb/main.sh>
@@ -19,9 +19,7 @@ void main() {
     mat4 model = u_model[0];
   #endif
 
-    v_wpos = mul(u_model[0], vec4(a_position, 1.0)).xyz;
-    
-  //vec3 worldPos = mul(model, vec4(a_position, 1.0)).xyz;
+  vec3 worldPos = mul(model, vec4(a_position, 1.0)).xyz;
 
   #if !(defined(DEPTH_ONLY_OPAQUE) || defined(DEPTH_ONLY) || defined(INSTANCING))
 
@@ -61,6 +59,7 @@ void main() {
   bool isColored = color.r != color.g || color.r != color.b;
   float shade = isColored ? color.g*1.5 : color.g;
 
+  // tree leaves detection
   #if defined(ALPHA_TEST) && !defined(RENDER_AS_BILLBOARDS)
     bool isTree = (isColored && (bPos.x+bPos.y+bPos.z < 0.001)) || color.a == 0.0;
   #else
@@ -70,10 +69,14 @@ void main() {
   nl_environment env = nlDetectEnvironment(FogColor.rgb, FogAndDistanceControl.xyz);
   nl_skycolor skycol = nlSkyColors(env, FogColor.rgb);
 
+  // time
   highp float t = ViewPositionAndTime.w;
 
+  // convert color space to linear-space
   #ifdef SEASONS
     isTree = true;
+
+    // season tree leaves are colored in fragment
     color.w *= color.w;
     color = vec4(color.www, 1.0);
   #else
@@ -82,13 +85,14 @@ void main() {
     }
   #endif
 
-  vec3 torchColor;
+  vec3 torchColor; // modified by nl_lighting
   vec3 light = nlLighting(skycol, env, worldPos, torchColor, a_color0.rgb, FogColor.rgb, uv1, lit, isTree, shade, t);
 
   #if defined(ALPHA_TEST) && (defined(NL_PLANTS_WAVE) || defined(NL_LANTERN_WAVE)) && !defined(RENDER_AS_BILLBOARDS)
     nlWave(worldPos, light, env.rainFactor, uv1, lit, a_texcoord0, bPos, a_color0, cPos, tiledCpos, t, isColored, camDis, isTree);
   #endif
 
+  // loading chunks
   relativeDist += RenderChunkFogAlpha.x;
 
   vec4 fogColor;
@@ -99,6 +103,7 @@ void main() {
   #endif
 
   if (env.nether) {
+    // blend fog with void color
     fogColor.rgb = colorCorrectionInv(FogColor.rgb);
   }
 
@@ -162,9 +167,6 @@ void main() {
   v_color0 = color;
   v_color1 = a_color0;
   v_fog = fogColor;
-  v_position = worldPos;
-  v_wpos = worldPos;
-  v_position = a_position;
 
   #else
 

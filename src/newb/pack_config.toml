@@ -1,22 +1,16 @@
-name = "Newb X Mashi v15.22"
-version = [0, 15, 22]
+name = "Newb X Legacy"
+version = [0, 15, 0]
 min_supported_mc_version = [1, 21, 20]
 description = '''
 §c%w
-§7- Note : Some bug(s) may still haven't fixed yet
-
-Recommend Minecraft Settings
-- 0 Brightness
-- 8 RenderChunk
-- 70 FOV
-
+§7- An enchanced vanilla shader for Minecraft!
 %v
 §3https://devendrn.github.io/newb-shader/
 ''' # %w = patch warning, %v = version
-authors = ["mashind", "devendrn"]
+authors = ["devendrn"]
 url = "https://devendrn.github.io/newb-shader/"
-uuid = "f3ed5ff0-c4ca-4af9-9a6b-4ce86cde662b" # Use https://www.uuidgenerator.net/version4
-materials = ["Sky", "RenderChunk", "EndSky", "Clouds", "SunMoon", "Weather", "Stars"]
+uuid = "95f774cf-4afa-73e7-a21a-72146307b1d2" # Use https://www.uuidgenerator.net/version4
+materials = ["Sky", "RenderChunk", "Actor", "ActorGlint", "EndSky", "Clouds", "SunMoon", "Weather", "ItemInHandTextured", "ItemInHandColor", "ItemInHandColorGlint", "Stars"]
 
 [info] 
 copyright = '''
@@ -29,29 +23,56 @@ You can compile the shader from source and distribute the result under your own 
 Contact (Discord Server): https://discord.gg/newb-community-844591537430069279
 ''' # %a = authors
 credits = '''
-Credit the EndSky by @jcgaming7125_17548 (discord)
 '''
 
 # subpacks are arranged in left to right order
 # right-most subpack is enabled by default
 
 [[subpack]]
-define = "LAYER_CLOUD_1"
+define = "ROUNDED_CLOUDS"
 materials = ["Clouds"]
 description = '''
-1 Layer Clouds
+Rounded Clouds
 '''
 
 [[subpack]]
-define = "LAYER_CLOUD_2"
-materials = ["Clouds"]
+define = "BOX_CLOUDS"
+materials = ["Clouds", "RenderChunk"]
 description = '''
-2 Layers Clouds
+Box Clouds
 '''
 
 [[subpack]]
-define = "LAYER_CLOUD_3"
-materials = ["Clouds"]
+define = "CHUNK_ANIM"
+materials = ["RenderChunk"]
 description = '''
-3 Layers Clouds
+Chunk loading animation
+'''
+
+[[subpack]]
+define = "NO_WAVE_NO_FOG"
+materials = ["RenderChunk"]
+description = '''
+No fog and wave effects
+'''
+
+[[subpack]]
+define = "NO_FOG"
+materials = ["RenderChunk"]
+description = '''
+No fog effect
+'''
+
+[[subpack]]
+define = "NO_WAVE"
+materials = ["RenderChunk"]
+description = '''
+No wave effects
+'''
+
+[[subpack]]
+define = "DEFAULT"
+materials = []
+description = '''
+Default
 '''
