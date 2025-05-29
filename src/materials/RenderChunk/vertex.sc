@@ -19,7 +19,9 @@ void main() {
     mat4 model = u_model[0];
   #endif
 
-  vec3 worldPos = mul(model, vec4(a_position, 1.0)).xyz;
+    v_wpos = mul(u_model[0], vec4(a_position, 1.0)).xyz;
+    
+  //vec3 worldPos = mul(model, vec4(a_position, 1.0)).xyz;
 
   #if !(defined(DEPTH_ONLY_OPAQUE) || defined(DEPTH_ONLY) || defined(INSTANCING))
 
